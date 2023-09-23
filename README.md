@@ -1,6 +1,6 @@
 # Project: JPG to PNG Converter
 
-### The scope is to convert all JPG images of a given folder and convert them into PNG images and saving them in another folder
+The scope is to convert all JPG images of a given folder and convert them into PNG images and saving them in another folder
 
 ## Start with the code below
 
@@ -11,7 +11,7 @@ from PIL import Image
 ```
 
 ## Steps:
-### Use the SIS module to grab the first and second argument/directory
-### Check if the 2n argument exist, if not create it
-### Loop through the first directory selecting all the images and convert them to PNG
-### Save them inside the second directory
+- Use the SIS module to grab the first and second argument/directory
+- Check if the 2n argument exist, if not create it
+- Loop through the first directory selecting all the images and convert them to PNG
+- Save them inside the second directory
