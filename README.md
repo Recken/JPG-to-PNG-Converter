@@ -1,4 +1,4 @@
-# Project: JPG to PNG Converter
+# JPG to PNG Converter
 
 The scope is to convert all JPG images of a given folder, convert them into PNG images and saving them in another folder
 
