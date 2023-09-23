@@ -2,33 +2,41 @@ import sys
 import os # or pathlib
 from PIL import Image
 
-# use SIS module and grab 1st, 2nd argument
-# check if 2n argument exist, if not create it
-# loop through the entire folder and convert images to PNG
-# for this we use the os module, we grab the path so we want the files of argument 1 and we want to write in argument2
-# save them to a new folder
+# Grabs first and second directory
+# Careful: needs to be add / at the end of each of the arguments provided!
+image_folder = sys.argv[1]
+output_folder = sys.argv[2]
 
-original_path = sys.argv[1]
-final_path = sys.argv[2]
-
-print(f"1st path {original_path} and 2nd path {final_path}")
-#os.chdir(f"{original_path}")
-#print(os.getcwd())     checks if it has changed the directory
+print(f"First directory is {image_folder} and second directory is {output_folder}")
 
 
-if os.access(final_path, os.F_OK):
-    print("The directory exists!")
+# Checks if second directory exists, if not is created
+if os.access(output_folder, os.F_OK):
+    print(f"The {output_folder} directory already exists!")
 else:
-    os.mkdir(final_path)
-    #os.chdir(f"{original_path}")
-    #print(os.getcwd())
-    print("Directory created!")
+    os.mkdir(output_folder)
+    #os.chdir(f"{output_folder}")   moves to the new directory created
+    #print(os.getcwd())     tell us in which directory we are in
+    print(f"The {output_folder} directory has been created!")
 
-#os.chdir(f"{original_path}")
-print(os.listdir(original_path))
-items_directory = os.listdir(original_path)
+'''
+Alternative:
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+'''
+
+# Loop over all items from first directory and turn them to PNG inside the second directory
+items_directory = os.listdir(image_folder)
 for items in items_directory:
-    print(items)
-    img = Image.open(f"{original_path}/{items}")
-    print(img)
-    img.save(f"{final_path}/{items[:-4]}.png", "png")
+    img = Image.open(f"{image_folder}{items}")
+    img.save(f"{output_folder}{items[:-4]}.png", "png")    # we remove the 4 last letters of items (.jpg) and write instead .png
+
+'''
+Alternative:
+for items in os.listdir(image_folder):
+    img = Image.open(f"{image_folder}{items}")
+    clean_name = os.path.splittext(filename)[0]
+    img.save(f"{output_folder}{clean_name}.png", "png")
+
+    Splitext will return a tupple with the file name and the extension, so we grab 0 to only pick up the filename and then we add the .png extension
+'''
