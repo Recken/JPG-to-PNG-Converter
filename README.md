@@ -1,6 +1,6 @@
 # JPG to PNG Converter
 
-The scope is to convert all JPG images of a given folder, convert them into PNG and save them in another folder
+The scope is to convert all JPG images of a given folder into PNG and save them in another folder
 
 ## Start with the code below
 
